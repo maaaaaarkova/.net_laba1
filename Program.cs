@@ -1,12 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using laba1.Models;
+using System.Linq;
+
 
 namespace laba1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
 
+            var query = new Queries()
+            {
+                Readers = Data.Readers,
+                Books = Data.Books,
+                Genres = Data.Genres,
+                Authors = Data.Authors,
+                RentedBooks = Data.RentedBooks
+            };
+
+            query.ReadersInfo();
+            query.BooksInfo();
+            query.AuthorsInfo();
         }
-    }
+    } 
 }

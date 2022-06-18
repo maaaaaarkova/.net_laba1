@@ -96,37 +96,37 @@ namespace laba1.Models
                 new Genre
                 {
                     Id = 1,
-                    GenreName = "Fantasy"
+                    Name = "Fantasy"
                 },
 
                 new Genre
                 {
                     Id = 2,
-                    GenreName = "Detective"
+                    Name = "Detective"
                 },
 
                 new Genre
                 {
                     Id = 3,
-                    GenreName = "Horror"
+                    Name = "Horror"
                 },
 
                 new Genre
                 {
                     Id = 4,
-                    GenreName = "Romance"
+                    Name = "Romance"
                 },
 
                 new Genre
                 {
                     Id = 5,
-                    GenreName = "Science Fiction"
+                    Name = "Science Fiction"
                 },
 
                 new Genre
                 {
                     Id = 6,
-                    GenreName = "Adventure"
+                    Name = "Adventure"
                 },
 
             };
@@ -240,6 +240,82 @@ namespace laba1.Models
                     RentPrice = 15
                 },
 
+            };
+
+        public static List<RentedBook> RentedBooks =>
+            new List<RentedBook>
+            {
+                new RentedBook
+                {
+                    ReaderId = 2,
+                    BookId = 4,
+                    IssueDate = new DateTime(2021, 7, 20),
+                    ReturnDate = new DateTime(2021, 8, 01)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 2,
+                    BookId = 6,
+                    IssueDate = new DateTime(2021, 10, 04),
+                    ReturnDate = new DateTime(2021, 10, 20)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 1,
+                    BookId = 4,
+                    IssueDate = new DateTime(2022, 5, 30),
+                    ReturnDate = new DateTime(2022, 6, 21)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 5,
+                    BookId = 1,
+                    IssueDate = new DateTime(2021, 6, 20),
+                    ReturnDate = new DateTime(2021, 8, 02)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 3,
+                    BookId = 2,
+                    IssueDate = new DateTime(2022, 1, 02),
+                    ReturnDate = new DateTime(2021, 1, 21)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 4,
+                    BookId = 4,
+                    IssueDate = new DateTime(2021, 1, 03),
+                    ReturnDate = new DateTime(2021, 1, 13)
+                },
+             
+                new RentedBook
+                {
+                    ReaderId = 7,
+                    BookId = 6,
+                    IssueDate = new DateTime(2021, 11, 17),
+                    ReturnDate = new DateTime(2021, 12, 13)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 7,
+                    BookId = 1,
+                    IssueDate = new DateTime(2021, 10, 09),
+                    ReturnDate = new DateTime(2021, 10, 31)
+                },
+
+                new RentedBook
+                {
+                    ReaderId = 5,
+                    BookId = 3,
+                    IssueDate = new DateTime(2022, 3, 19),
+                    ReturnDate = new DateTime(2021, 4, 05)
+                }
             };
     }
 }
