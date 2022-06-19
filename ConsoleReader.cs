@@ -21,7 +21,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksInfo(List<(Genre Genre, Author Author, Book Book)> list)
+        public static void GetBooksInfo(IEnumerable<BooksInfoViewModel> list)
         {
             foreach (var bookInfo in list)
             {
@@ -43,7 +43,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksPriceOver40(List<(Genre Genre, Author Author, Book Book)> list)
+        public static void GetBooksPriceOver40(IEnumerable<BooksInfoViewModel> list)
         {
             foreach (var bookPriceOver in list)
             {
@@ -68,7 +68,7 @@ namespace laba1
             }
         }
 
-        public static void GetStephenKingBooks(List<(Author Author, Book Book)> list)
+        public static void GetStephenKingBooks(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var kingsBooks in list)
             {
@@ -92,7 +92,7 @@ namespace laba1
             }
         }
 
-        public static void GetReadersRentedBooks(List<(Reader Reader, Book Book)> list)
+        public static void GetReadersRentedBooks(IEnumerable<ReaderBookViewModel> list)
         {
             foreach (var readersBooks in list)
             {
@@ -104,7 +104,7 @@ namespace laba1
             }
         }
 
-        public static void GetGenresGroupBooks(List<(Genre Genre, Book Book)> list)
+        public static void GetGenresGroupBooks(IEnumerable<GenreBookViewModel> list)
         {
             foreach (var genresBooks in list)
             {
@@ -114,7 +114,8 @@ namespace laba1
                 Console.WriteLine("\n");
             }
         }
-        public static void GetReadersRentedTime(List<(Reader Reader, Book Book, RentedBook RentedBook)> list)
+
+        public static void GetReadersRentedTime(IEnumerable<ReaderBookInfoViewModel> list)
         {
             
             foreach (var readersTime in list)
@@ -123,13 +124,13 @@ namespace laba1
                 Console.WriteLine(readersTime.Reader.Name);
                 Console.WriteLine(readersTime.Reader.Patronymic);
                 Console.WriteLine(readersTime.Book.Name);
-                TimeSpan rent = readersTime.RentedBook.ReturnDate.Subtract(readersTime.RentedBook.IssueDate);
+                TimeSpan rent = readersTime.ReturnDate.Subtract(readersTime.IssueDate);
                 Console.WriteLine(String.Format("{0:dd}", rent));
                 Console.WriteLine("\n");
             }
         }
 
-        public static void GetHorrorandDetectiveBooks(List<(Genre Genre, Book Book)> list)
+        public static void GetHorrorandDetectiveBooks(IEnumerable<GenreBookViewModel> list)
         {
             foreach (var HorrorandDetectiveBooks in list)
             {
@@ -139,7 +140,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksAuthorWithS(List<(Author Author, Book Book)> list)
+        public static void GetBooksAuthorWithS(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var booksAuthorWithS in list)
             {
@@ -149,7 +150,7 @@ namespace laba1
             }
         }
 
-        public static void GetKingsBookPriceLower45(List<(Author Author, Book Book)> list)
+        public static void GetKingsBookPriceLower45(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var kingsBookPriceLower in list)
             {
@@ -170,6 +171,43 @@ namespace laba1
                 Console.WriteLine("\n");
             }
         }
+
+        public static void GetAllAuthors(IEnumerable<Author> list)
+        {
+            foreach (var author in list)
+            {
+                Console.WriteLine(author.Name);
+                Console.WriteLine("\n");
+            }
+        }
+
+        public static void GetBooksByGenre(Dictionary<string, IEnumerable<Book>> list)
+        {
+            foreach(var bookByGenre in list)
+            {
+                Console.WriteLine(bookByGenre.Key);
+                foreach(var book in bookByGenre.Value)
+                {
+                    Console.WriteLine(book.Name);
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+        public static void GetBooksByAuthor(Dictionary<string, IEnumerable<Book>> list)
+        {
+            foreach (var bookByAuthor in list)
+            {
+                Console.WriteLine(bookByAuthor.Key);
+                foreach (var book in bookByAuthor.Value)
+                {
+                    Console.WriteLine(book.Name);
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+
 
     }
 }

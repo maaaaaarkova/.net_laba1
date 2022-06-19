@@ -15,18 +15,18 @@ namespace laba1
                 from Reader in Data.Readers
                 select Reader;
 
-            return readerInfo.ToList();
+            return readerInfo;
         }
 
-        public static List <(Genre Genre, Author Author, Book Book)> BooksInfo()
+        public static IEnumerable<BooksInfoViewModel> BooksInfo()
         {
             var booksInfo =
                 from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
                 join Genre in Data.Genres on Book.GenreId equals Genre.Id
-                select new { Book, Author, Genre };
+                select new BooksInfoViewModel() { Book = Book, Author = Author, Genre = Genre };
 
-            return booksInfo.Select(i => (Genre: i.Genre, Author: i.Author, Book: i.Book)).ToList();       
+            return booksInfo;       
         }
 
         public static IEnumerable<Author> AuthorsSortedInfo()
@@ -36,119 +36,122 @@ namespace laba1
                 orderby Author.Name
                 select Author;
 
-            return authorsSortedInfo.ToList();
+            return authorsSortedInfo;
         }
 
-        public static List<(Genre Genre, Author Author, Book Book)> BooksPriceOver40()
+        public static IEnumerable<BooksInfoViewModel> BooksPriceOver40()
         {
             var bookPriceOver =
                 from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
                 join Genre in Data.Genres on Book.GenreId equals Genre.Id
                 where Book.Deposit >= 40
-                select new { Book, Author, Genre };
+                select new BooksInfoViewModel() { Book = Book, Author = Author, Genre = Genre };
 
-            return bookPriceOver.Select(i => (Genre: i.Genre, Author: i.Author, Book: i.Book)).ToList();
+            return bookPriceOver;
 
         }
 
         public static IEnumerable<Reader> ReaderNameStartsWithOInfo()
         {
-            var nameStartsWithO =
-                from Reader in Data.Readers
-                where Reader.Name.StartsWith("O")
-                select Reader;
+            var nameStartsWithO = Data.Readers.Where(i => i.Name.StartsWith("O"));
 
-            return nameStartsWithO.ToList();
+            return nameStartsWithO;
         }
 
-        public static List<(Author Author, Book Book)> StephenKingBooks()
+        public static IEnumerable<AuthorBookViewModel> StephenKingBooks()
         {
             var kingsBooks =
                 from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
                 where Author.Name == "Stephen King"
-                select new { Book, Author };
+                select new AuthorBookViewModel() { Book = Book, Author = Author };
 
-            return kingsBooks.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+            return kingsBooks;
         }
 
 
         public static IEnumerable<Reader> SortedCollegeStudents()
         {
-            var sortedCollegeStudent =
-                from Reader in Data.Readers
-                where Reader.Category == Category.CollegeStudent
-                orderby Reader.LastName
-                select Reader;
+            var sortedCollegeStudent = Data.Readers.Where(i => i.Category == Category.CollegeStudent).OrderBy(i => i.LastName);
 
-            return sortedCollegeStudent.ToList();
+            return sortedCollegeStudent;
         }
 
-        public static List<(Reader Reader, Book Book)> ReadersRentedBooks()
+        public static IEnumerable<ReaderBookViewModel> ReadersRentedBooks()
         {
             var readersBooks =
                 from Reader in Data.Readers
                 join RentedBook in Data.RentedBooks on Reader.Id equals RentedBook.ReaderId
                 join Book in Data.Books on RentedBook.BookId equals Book.Id
-                select new { Reader, Book };
+                select new ReaderBookViewModel() { Reader = Reader, Book = Book };
 
-            return readersBooks.Select(i => (Reader: i.Reader, Book: i.Book)).ToList();
+            return readersBooks;
         }
 
-        public static List<(Genre Genre, Book Book)> GenresGroupBooks()
+        public static IEnumerable<GenreBookViewModel> GenresGroupBooks()
         {
             var genresBooks =
                 from Book in Data.Books
                 join Genre in Data.Genres on Book.GenreId equals Genre.Id
                 orderby Genre.Name
-                select new { Genre, Book };
+                select new GenreBookViewModel() { Genre = Genre, Book = Book };
 
-            return genresBooks.Select(i => (Genre: i.Genre, Book: i.Book)).ToList();
+            return genresBooks;
         }
 
-        public static List<(Reader Reader, Book Book, RentedBook RentedBook)> ReadersRentedTime()
+        public static IEnumerable<ReaderBookInfoViewModel> ReadersRentedTime()
         {
             var readersTime =
                 from Reader in Data.Readers
                 join RentedBook in Data.RentedBooks on Reader.Id equals RentedBook.ReaderId
                 join Book in Data.Books on RentedBook.BookId equals Book.Id
                 orderby RentedBook.ReturnDate.Subtract(RentedBook.IssueDate)
-                select new { Reader, Book, RentedBook };
+                select new ReaderBookInfoViewModel() 
+                {
+                    Reader = Reader, 
+                    Book = Book, 
+                    IssueDate = RentedBook.IssueDate, 
+                    ReturnDate = RentedBook.ReturnDate 
+                };
 
-            return readersTime.Select(i => (Reader: i.Reader, Book: i.Book, RentedBook: i.RentedBook)).ToList();
+            return readersTime;
         }
 
-        public static List<(Genre Genre, Book Book)> HorrorandDetectiveBooks()
+        public static IEnumerable<GenreBookViewModel> HorrorandDetectiveBooks()
         {
             var horrorAndDetective =
                 from Book in Data.Books
                 join Genre in Data.Genres on Book.GenreId equals Genre.Id
                 where (Genre.Name == "Horror" || Genre.Name == "Detective")
                 orderby Genre.Name
-                select new { Book, Genre };
+                select new GenreBookViewModel() { Book = Book, Genre = Genre};
 
-            return horrorAndDetective.Select(i => (Genre: i.Genre, Book: i.Book)).ToList();
+            return horrorAndDetective;
         }
 
-        public static List<(Author Author, Book Book)> BooksAuthorWithS()
+        public static IEnumerable<AuthorBookViewModel> BooksAuthorWithS()
         {
             var booksAuthorWithS =
                 from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
                 where Author.Name.StartsWith("S")
                 orderby Author.Name
-                select new { Book, Author };
+                select new AuthorBookViewModel() { Book = Book, Author = Author };
 
-            return booksAuthorWithS.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+            return booksAuthorWithS;
         }
 
-        public static List<(Author Author, Book Book)> KingsBookPriceLower45()
+        public static IEnumerable<AuthorBookViewModel> KingsBookPriceLower45()
         {
-            var kingsBookPriceLower = Data.Books.Join(Data.Authors, Book => Book.AuthorId, Author => Author.Id, (Book, Author) => new { Book, Author })
-                .Where(Book => Book.Author.Name == "Stephen King" && Book.Book.Deposit < 45);
+            var kingsBookPriceLower = Data.Books.Join(Data.Authors, 
+                                                      Book => Book.AuthorId, 
+                                                      Author => Author.Id, 
+                                                      (Book, Author) => new { Book, Author })
+                .Where(Book => Book.Author.Name == "Stephen King" && Book.Book.Deposit < 45)
+                .Select(i => new AuthorBookViewModel() { Author = i.Author, Book = i.Book});
 
-            return kingsBookPriceLower.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+            return kingsBookPriceLower;
         }
 
         public static IEnumerable<Book> BookPriceForWeek()
@@ -158,7 +161,7 @@ namespace laba1
                 orderby (Book.RentPrice * 7)
                 select Book;
 
-            return priceForWeek.ToList();
+            return priceForWeek;
         }
 
         public static int BooksPriceHigher40()
@@ -173,6 +176,32 @@ namespace laba1
             return booksPriceHigher40;
         }
 
+        public static IEnumerable<Author> AllAuthors()
+        {
+            var all = Data.Authors.Concat(Data.ConcatAuthors);
+
+            return all;
+        }
+
+        public static Dictionary<string, IEnumerable <Book>> BooksByGenre()
+        {
+            var booksGenres =
+                from Book in Data.Books
+                join Genre in Data.Genres on Book.GenreId equals Genre.Id
+                group Book by Genre.Name into models
+                select models;
+
+            return booksGenres.ToDictionary(i => i.Key, j => j.Select(b => b));
+        }
+
+        public static Dictionary<string, IEnumerable<Book>> BooksByAuthor()
+        {
+            var booksAuthor = Data.Books.Join(Data.Authors, i => i.AuthorId, a => a.Id, (Book, Author) => new { Book, Author }).GroupBy(i => i.Author.Name);
+
+
+            return booksAuthor.ToDictionary(i => i.Key, j => j.Select(a => a.Book));
+
+        }
 
     }
 }

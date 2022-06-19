@@ -174,6 +174,7 @@ namespace laba1.Models
                     Id = 5,
                     Name = "George Orwell",
                 },
+
                 new Author
                 {
                     Id = 6,
@@ -187,6 +188,35 @@ namespace laba1.Models
                 },
 
             };
+
+        public static List<Author> ConcatAuthors =>
+           new List<Author>
+           {
+                new Author
+                {
+                    Id = 1,
+                    Name = "Taras Shevchenko",
+                },
+
+                new Author
+                {
+                    Id = 2,
+                    Name = "Ivan Franko",
+                },
+
+                new Author
+                {
+                    Id = 3,
+                    Name = "Olena Pchilka",
+                },
+
+                new Author
+                {
+                    Id = 4,
+                    Name = "Mykola Hvyloviy",
+                },
+
+           };
 
         public static List<Book> Books =>
             new List<Book>
