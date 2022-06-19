@@ -143,6 +143,36 @@ namespace laba1
             return booksAuthorWithS.Select(i => (Author: i.Author, Book: i.Book)).ToList();
         }
 
+        public static List<(Author Author, Book Book)> KingsBookPriceLower45()
+        {
+            var kingsBookPriceLower = Data.Books.Join(Data.Authors, Book => Book.AuthorId, Author => Author.Id, (Book, Author) => new { Book, Author })
+                .Where(Book => Book.Author.Name == "Stephen King" && Book.Book.Deposit < 45);
+
+            return kingsBookPriceLower.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+        }
+
+        public static IEnumerable<Book> BookPriceForWeek()
+        {
+            var priceForWeek =
+                from Book in Data.Books
+                orderby (Book.RentPrice * 7)
+                select Book;
+
+            return priceForWeek.ToList();
+        }
+
+        public static int BooksPriceHigher40()
+        {
+            var booksPriceHigher40 =
+                (from Book in Data.Books
+                join Author in Data.Authors on Book.AuthorId equals Author.Id
+                where (Author.Name != "Stephen King" && Book.Deposit > 40)
+                orderby Book.Deposit
+                select new { Book, Author }).Count();
+
+            return booksPriceHigher40;
+        }
+
 
     }
 }

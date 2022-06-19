@@ -69,6 +69,21 @@ namespace laba1
 
             var booksAuthorWithS = Queries.BooksAuthorWithS();
             ConsoleReader.GetBooksAuthorWithS(booksAuthorWithS);
+
+            Console.WriteLine("___________________________________________________________________________");
+
+            var kingsBookPrice = Queries.KingsBookPriceLower45();
+            ConsoleReader.GetKingsBookPriceLower45(kingsBookPrice);
+
+            Console.WriteLine("___________________________________________________________________________");
+
+            var weekPrice = Queries.BookPriceForWeek();
+            ConsoleReader.GetBookPriceForWeek(weekPrice);
+
+            Console.WriteLine("___________________________________________________________________________");
+
+            var booksPriceHigher40 = Queries.BooksPriceHigher40();
+            Console.WriteLine(booksPriceHigher40);
         }
     } 
 }

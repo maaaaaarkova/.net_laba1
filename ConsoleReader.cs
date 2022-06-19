@@ -148,5 +148,28 @@ namespace laba1
                 Console.WriteLine("\n");
             }
         }
+
+        public static void GetKingsBookPriceLower45(List<(Author Author, Book Book)> list)
+        {
+            foreach (var kingsBookPriceLower in list)
+            {
+                Console.WriteLine(kingsBookPriceLower.Book.Name);
+                Console.WriteLine(kingsBookPriceLower.Author.Name);
+                Console.WriteLine(kingsBookPriceLower.Book.Deposit);
+                Console.WriteLine("\n");
+            }
+        }
+
+        public static void GetBookPriceForWeek(IEnumerable<Book> list)
+        {
+            foreach (var priceForWeek in list)
+            {
+                Console.WriteLine(priceForWeek.Name);
+                Console.WriteLine(priceForWeek.RentPrice);
+                Console.WriteLine(priceForWeek.RentPrice * 7);
+                Console.WriteLine("\n");
+            }
+        }
+
     }
 }
