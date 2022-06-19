@@ -12,18 +12,11 @@ namespace laba1
         public static void Main()
         {
 
-            var query = new Queries()
-            {
-                Readers = Data.Readers,
-                Books = Data.Books,
-                Genres = Data.Genres,
-                Authors = Data.Authors,
-                RentedBooks = Data.RentedBooks
-            };
+            var list = Queries.ReadersInfo();
+            GetInfo.GetReadersInfo(list);
 
-            query.ReadersInfo();
-            query.BooksInfo();
-            query.AuthorsInfo();
+            var list1 = Queries.BooksInfo();
+            GetInfo.GetBooksInfo(list1);
         }
     } 
 }

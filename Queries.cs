@@ -6,48 +6,49 @@ using System.Linq;
 
 namespace laba1
 {
-    class Queries
+    public static class Queries
     {
-        public List<Reader> Readers { get; set; }
-        public void ReadersInfo()
+        public static IEnumerable<Reader> ReadersInfo()
         {
-            foreach (var readerInfo in (from Reader in Readers select Reader))
-            {
-                Console.WriteLine(readerInfo.LastName + "\n" + readerInfo.Name + "\n" + readerInfo.Patronymic + "\n" + readerInfo.PhoneNumber + "\n" + readerInfo.Address);
-                Console.WriteLine("\n");
-            }
+            var readerInfo =
+                from Reader in Data.Readers
+                select Reader;
+
+            return readerInfo.ToList();
         }
 
-        public List<Book> Books { get; set; }
-        public void BooksInfo()
+        public static List <(Genre Genre, Author Author, Book Book)> BooksInfo()
         {
             var booksInfo =
-                from Book in Books
-                join Author in Authors on Book.AuthorId equals Author.Id
-                join Genre in Genres on Book.GenreId equals Genre.Id
+                from Book in Data.Books
+                join Author in Data.Authors on Book.AuthorId equals Author.Id
+                join Genre in Data.Genres on Book.GenreId equals Genre.Id
                 select new { Book, Author, Genre };
-            foreach(var bookInfo in booksInfo)
-            {
-                Console.WriteLine( bookInfo.Book.Name + "\n" + bookInfo.Author.Name + "\n" + bookInfo.Genre.Name + "\n" + bookInfo.Book.Deposit + "\n" + bookInfo.Book.RentPrice);
-                Console.WriteLine("\n");
-            }
+
+            return booksInfo.Select(i => (Genre: i.Genre, Author: i.Author, Book: i.Book)).ToList();       
         }
 
-        public List<Author> Authors { get; set; }
-        public void AuthorsInfo()
+        public static void AuthorsSortedInfo()
         {
             var authorsInfo =
-                from Author in Authors
+                from Author in Data.Authors
                 orderby Author.Name
                 select Author;
 
-            foreach(var authorInfo in authorsInfo)
-            {
-                Console.WriteLine(authorInfo.Name);
-            }
         }
-        public List<Genre> Genres { get; set; }
-        public List<RentedBook> RentedBooks { get; set; }
+
+        public static Dictionary<string, (Author Author, Book Book)> BooksPriceOver40()
+        {
+            var bookPriceOver =
+                from Book in Data.Books
+                join Author in Data.Authors on Book.AuthorId equals Author.Id
+                join Genre in Data.Genres on Book.GenreId equals Genre.Id
+                where Book.Deposit >= 40
+                select new { Book, Author, Genre };
+
+            return bookPriceOver.ToDictionary(i => i.Genre.Name, i => (Author: i.Author, Book: i.Book));
+
+        }
 
 
     }
