@@ -88,6 +88,17 @@ namespace laba1.Models
                     Category = Category.CollegeStudent
                 },
 
+                new Reader()
+                {
+                    Id = 8,
+                    LastName = "Mykolayiv",
+                    Name = "Mykola",
+                    Patronymic = "Mykolayovych",
+                    Address = "vul. Vosma 351",
+                    PhoneNumber = "380661876321",
+                    Category = Category.CollegeStudent
+                },
+
             };
 
         public static List<Genre> Genres =>
@@ -239,6 +250,37 @@ namespace laba1.Models
                     Deposit = 70,
                     RentPrice = 15
                 },
+
+                new Book
+                {
+                    Id = 7,
+                    Name = "The Stand",
+                    AuthorId = 2,
+                    GenreId = 3,
+                    Deposit = 50,
+                    RentPrice = 13
+                },
+
+                new Book
+                {
+                    Id = 8,
+                    Name = "If it bleeds",
+                    AuthorId = 2,
+                    GenreId = 3,
+                    Deposit = 45,
+                    RentPrice = 12
+                },
+
+                new Book
+                {
+                    Id = 9,
+                    Name = "The Mist",
+                    AuthorId = 2,
+                    GenreId = 3,
+                    Deposit = 35,
+                    RentPrice = 8
+                },
+
 
             };
 

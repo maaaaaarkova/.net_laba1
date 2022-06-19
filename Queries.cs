@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using laba1.Models;
+using laba1.Models.Enum;
 using System.Linq;
 
 namespace laba1
@@ -28,16 +29,17 @@ namespace laba1
             return booksInfo.Select(i => (Genre: i.Genre, Author: i.Author, Book: i.Book)).ToList();       
         }
 
-        public static void AuthorsSortedInfo()
+        public static IEnumerable<Author> AuthorsSortedInfo()
         {
-            var authorsInfo =
+            var authorsSortedInfo =
                 from Author in Data.Authors
                 orderby Author.Name
                 select Author;
 
+            return authorsSortedInfo.ToList();
         }
 
-        public static Dictionary<string, (Author Author, Book Book)> BooksPriceOver40()
+        public static List<(Genre Genre, Author Author, Book Book)> BooksPriceOver40()
         {
             var bookPriceOver =
                 from Book in Data.Books
@@ -46,10 +48,51 @@ namespace laba1
                 where Book.Deposit >= 40
                 select new { Book, Author, Genre };
 
-            return bookPriceOver.ToDictionary(i => i.Genre.Name, i => (Author: i.Author, Book: i.Book));
+            return bookPriceOver.Select(i => (Genre: i.Genre, Author: i.Author, Book: i.Book)).ToList();
 
         }
 
+        public static IEnumerable<Reader> ReaderNameStartsWithOInfo()
+        {
+            var nameStartsWithO =
+                from Reader in Data.Readers
+                where Reader.Name.StartsWith("O")
+                select Reader;
 
+            return nameStartsWithO.ToList();
+        }
+
+        public static List<(Author Author, Book Book)> StephenKingBooks()
+        {
+            var kingsBooks =
+                from Book in Data.Books
+                join Author in Data.Authors on Book.AuthorId equals Author.Id
+                where Author.Name == "Stephen King"
+                select new { Book, Author };
+
+            return kingsBooks.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+        }
+
+        public static IEnumerable<Reader> SortedCollegeStudents()
+        {
+            var sortedCollegeStudent =
+                from Reader in Data.Readers
+                where Reader.Category == Category.CollegeStudent
+                orderby Reader.LastName
+                select Reader;
+
+            return sortedCollegeStudent.ToList();
+        }
+
+        public static List<(Reader Reader, Book Book)> ReadersRentedBooks()
+        {
+            var readersBooks =
+                from Reader in Data.Readers
+                join RentedBook in Data.RentedBooks on Reader.Id equals RentedBook.ReaderId
+                join Book in Data.Books on RentedBook.BookId equals Book.Id
+                select new { Reader, Book };
+
+            return readersBooks.Select(i => (Reader: i.Reader, Book: i.Book)).ToList();
+        }
     }
 }

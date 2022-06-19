@@ -12,11 +12,29 @@ namespace laba1
         public static void Main()
         {
 
-            var list = Queries.ReadersInfo();
-            GetInfo.GetReadersInfo(list);
+            var readerInfo = Queries.ReadersInfo();
+            ConsoleReader.GetReadersInfo(readerInfo);
 
-            var list1 = Queries.BooksInfo();
-            GetInfo.GetBooksInfo(list1);
+            var bookInfo = Queries.BooksInfo();
+            ConsoleReader.GetBooksInfo(bookInfo);
+
+            var authorSorted = Queries.AuthorsSortedInfo();
+            ConsoleReader.GetSortedAuthors(authorSorted);
+
+            var priceOver40 = Queries.BooksPriceOver40();
+            ConsoleReader.GetBooksPriceOver40(priceOver40);
+
+            var nameStartsWithO = Queries.ReaderNameStartsWithOInfo();
+            ConsoleReader.GetReadersNameStartsWithO(nameStartsWithO);
+
+            var stephensBooks = Queries.StephenKingBooks();
+            ConsoleReader.GetStephenKingBooks(stephensBooks);
+
+            var sortedCollege = Queries.SortedCollegeStudents();
+            ConsoleReader.GetSortedCollegeStudents(sortedCollege);
+
+            var readersRentedBooks = Queries.ReadersRentedBooks();
+            ConsoleReader.GetReadersRentedBooks(readersRentedBooks);
         }
     } 
 }
