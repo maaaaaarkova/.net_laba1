@@ -73,6 +73,7 @@ namespace laba1
             return kingsBooks.Select(i => (Author: i.Author, Book: i.Book)).ToList();
         }
 
+
         public static IEnumerable<Reader> SortedCollegeStudents()
         {
             var sortedCollegeStudent =
@@ -94,5 +95,54 @@ namespace laba1
 
             return readersBooks.Select(i => (Reader: i.Reader, Book: i.Book)).ToList();
         }
+
+        public static List<(Genre Genre, Book Book)> GenresGroupBooks()
+        {
+            var genresBooks =
+                from Book in Data.Books
+                join Genre in Data.Genres on Book.GenreId equals Genre.Id
+                orderby Genre.Name
+                select new { Genre, Book };
+
+            return genresBooks.Select(i => (Genre: i.Genre, Book: i.Book)).ToList();
+        }
+
+        public static List<(Reader Reader, Book Book, RentedBook RentedBook)> ReadersRentedTime()
+        {
+            var readersTime =
+                from Reader in Data.Readers
+                join RentedBook in Data.RentedBooks on Reader.Id equals RentedBook.ReaderId
+                join Book in Data.Books on RentedBook.BookId equals Book.Id
+                orderby RentedBook.ReturnDate.Subtract(RentedBook.IssueDate)
+                select new { Reader, Book, RentedBook };
+
+            return readersTime.Select(i => (Reader: i.Reader, Book: i.Book, RentedBook: i.RentedBook)).ToList();
+        }
+
+        public static List<(Genre Genre, Book Book)> HorrorandDetectiveBooks()
+        {
+            var horrorAndDetective =
+                from Book in Data.Books
+                join Genre in Data.Genres on Book.GenreId equals Genre.Id
+                where (Genre.Name == "Horror" || Genre.Name == "Detective")
+                orderby Genre.Name
+                select new { Book, Genre };
+
+            return horrorAndDetective.Select(i => (Genre: i.Genre, Book: i.Book)).ToList();
+        }
+
+        public static List<(Author Author, Book Book)> BooksAuthorWithS()
+        {
+            var booksAuthorWithS =
+                from Book in Data.Books
+                join Author in Data.Authors on Book.AuthorId equals Author.Id
+                where Author.Name.StartsWith("S")
+                orderby Author.Name
+                select new { Book, Author };
+
+            return booksAuthorWithS.Select(i => (Author: i.Author, Book: i.Book)).ToList();
+        }
+
+
     }
 }

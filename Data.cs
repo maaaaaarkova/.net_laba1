@@ -323,7 +323,7 @@ namespace laba1.Models
                 {
                     ReaderId = 3,
                     BookId = 2,
-                    IssueDate = new DateTime(2022, 1, 02),
+                    IssueDate = new DateTime(2021, 1, 02),
                     ReturnDate = new DateTime(2021, 1, 21)
                 },
 
@@ -356,7 +356,7 @@ namespace laba1.Models
                     ReaderId = 5,
                     BookId = 3,
                     IssueDate = new DateTime(2022, 3, 19),
-                    ReturnDate = new DateTime(2021, 4, 05)
+                    ReturnDate = new DateTime(2022, 4, 05)
                 }
             };
     }

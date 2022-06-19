@@ -103,5 +103,50 @@ namespace laba1
                 Console.WriteLine("\n");
             }
         }
+
+        public static void GetGenresGroupBooks(List<(Genre Genre, Book Book)> list)
+        {
+            foreach (var genresBooks in list)
+            {
+
+                Console.WriteLine(genresBooks.Book.Name);
+                Console.WriteLine(genresBooks.Genre.Name);
+                Console.WriteLine("\n");
+            }
+        }
+        public static void GetReadersRentedTime(List<(Reader Reader, Book Book, RentedBook RentedBook)> list)
+        {
+            
+            foreach (var readersTime in list)
+            {
+                Console.WriteLine(readersTime.Reader.LastName);
+                Console.WriteLine(readersTime.Reader.Name);
+                Console.WriteLine(readersTime.Reader.Patronymic);
+                Console.WriteLine(readersTime.Book.Name);
+                TimeSpan rent = readersTime.RentedBook.ReturnDate.Subtract(readersTime.RentedBook.IssueDate);
+                Console.WriteLine(String.Format("{0:dd}", rent));
+                Console.WriteLine("\n");
+            }
+        }
+
+        public static void GetHorrorandDetectiveBooks(List<(Genre Genre, Book Book)> list)
+        {
+            foreach (var HorrorandDetectiveBooks in list)
+            {
+                Console.WriteLine(HorrorandDetectiveBooks.Book.Name);
+                Console.WriteLine(HorrorandDetectiveBooks.Genre.Name);
+                Console.WriteLine("\n");
+            }
+        }
+
+        public static void GetBooksAuthorWithS(List<(Author Author, Book Book)> list)
+        {
+            foreach (var booksAuthorWithS in list)
+            {
+                Console.WriteLine(booksAuthorWithS.Book.Name);
+                Console.WriteLine(booksAuthorWithS.Author.Name);
+                Console.WriteLine("\n");
+            }
+        }
     }
 }
