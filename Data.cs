@@ -189,7 +189,7 @@ namespace laba1.Models
 
             };
 
-        public static List<Author> ConcatAuthors =>
+        public static List<Author> UkrainianAuthors =>
            new List<Author>
            {
                 new Author

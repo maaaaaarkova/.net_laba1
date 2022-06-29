@@ -64,7 +64,7 @@ namespace laba1
             var kingsBooks =
                 from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
-                where Author.Name == "Stephen King"
+                where (Author.Name.Equals("Stephen King", StringComparison.OrdinalIgnoreCase))
                 select new AuthorBookViewModel() { Book = Book, Author = Author };
 
             return kingsBooks;
@@ -123,7 +123,8 @@ namespace laba1
             var horrorAndDetective =
                 from Book in Data.Books
                 join Genre in Data.Genres on Book.GenreId equals Genre.Id
-                where (Genre.Name == "Horror" || Genre.Name == "Detective")
+                where (Genre.Name.Equals("Horror", StringComparison.OrdinalIgnoreCase) || 
+                       Genre.Name.Equals("Detective", StringComparison.OrdinalIgnoreCase))
                 orderby Genre.Name
                 select new GenreBookViewModel() { Book = Book, Genre = Genre};
 
@@ -169,7 +170,7 @@ namespace laba1
             var booksPriceHigher40 =
                 (from Book in Data.Books
                 join Author in Data.Authors on Book.AuthorId equals Author.Id
-                where (Author.Name != "Stephen King" && Book.Deposit > 40)
+                where (!Author.Name.Equals("Stephen King", StringComparison.OrdinalIgnoreCase) && Book.Deposit > 40)
                 orderby Book.Deposit
                 select new { Book, Author }).Count();
 
@@ -178,7 +179,7 @@ namespace laba1
 
         public static IEnumerable<Author> AllAuthors()
         {
-            var all = Data.Authors.Concat(Data.ConcatAuthors);
+            var all = Data.Authors.Concat(Data.UkrainianAuthors);
 
             return all;
         }
