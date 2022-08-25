@@ -8,7 +8,7 @@ namespace laba1.Models
 {
     public class Data
     {
-        public static List<Reader> Readers =>
+        public List<Reader> Readers =>
             new List<Reader>
             {
                 new Reader()
@@ -101,7 +101,7 @@ namespace laba1.Models
 
             };
 
-        public static List<Genre> Genres =>
+        public List<Genre> Genres =>
             new List<Genre>
             {
                 new Genre
@@ -142,7 +142,7 @@ namespace laba1.Models
 
             };
 
-        public static List<Author> Authors =>
+        public List<Author>  Authors =>
             new List<Author>
             {
                 new Author
@@ -189,7 +189,7 @@ namespace laba1.Models
 
             };
 
-        public static List<Author> UkrainianAuthors =>
+        public List<Author> UkrainianAuthors =>
            new List<Author>
            {
                 new Author
@@ -218,7 +218,7 @@ namespace laba1.Models
 
            };
 
-        public static List<Book> Books =>
+        public List<Book> Books =>
             new List<Book>
             {
                 new Book
@@ -314,7 +314,7 @@ namespace laba1.Models
 
             };
 
-        public static List<RentedBook> RentedBooks =>
+        public List<RentedBook> RentedBooks =>
             new List<RentedBook>
             {
                 new RentedBook

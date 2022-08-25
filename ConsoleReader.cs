@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace laba1
 {
-    public static class ConsoleReader
+    public class ConsoleReader
     {
-        public static void GetReadersInfo(IEnumerable<Reader> list)
+        public void GetReadersInfo(IEnumerable<Reader> list)
         {
             foreach (var readerInfo in list)
             {
@@ -21,7 +21,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksInfo(IEnumerable<BooksInfoViewModel> list)
+        public void GetBooksInfo(IEnumerable<BooksInfoViewModel> list)
         {
             foreach (var bookInfo in list)
             {
@@ -34,7 +34,7 @@ namespace laba1
             }
         }
 
-        public static void GetSortedAuthors(IEnumerable<Author> list)
+        public void GetSortedAuthors(IEnumerable<Author> list)
         {
             foreach (var authorInfo in list)
             {
@@ -43,7 +43,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksPriceOver40(IEnumerable<BooksInfoViewModel> list)
+        public void GetBooksPriceOver40(IEnumerable<BooksInfoViewModel> list)
         {
             foreach (var bookPriceOver in list)
             {
@@ -55,7 +55,7 @@ namespace laba1
             }
         }
 
-        public static void GetReadersNameStartsWithO(IEnumerable<Reader> list)
+        public void GetReadersNameStartsWithO(IEnumerable<Reader> list)
         {
             foreach (var nameStartsWithO in list)
             {
@@ -68,7 +68,7 @@ namespace laba1
             }
         }
 
-        public static void GetStephenKingBooks(IEnumerable<AuthorBookViewModel> list)
+        public void GetStephenKingBooks(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var kingsBooks in list)
             {
@@ -78,7 +78,7 @@ namespace laba1
             }
         }
 
-        public static void GetSortedCollegeStudents(IEnumerable<Reader> list)
+        public void GetSortedCollegeStudents(IEnumerable<Reader> list)
         {
             foreach (var sortedCollegeStudent in list)
             {
@@ -92,7 +92,7 @@ namespace laba1
             }
         }
 
-        public static void GetReadersRentedBooks(IEnumerable<ReaderBookViewModel> list)
+        public void GetReadersRentedBooks(IEnumerable<ReaderBookViewModel> list)
         {
             foreach (var readersBooks in list)
             {
@@ -104,7 +104,7 @@ namespace laba1
             }
         }
 
-        public static void GetGenresGroupBooks(IEnumerable<GenreBookViewModel> list)
+        public void GetGenresGroupBooks(IEnumerable<GenreBookViewModel> list)
         {
             foreach (var genresBooks in list)
             {
@@ -115,7 +115,7 @@ namespace laba1
             }
         }
 
-        public static void GetReadersRentedTime(IEnumerable<ReaderBookInfoViewModel> list)
+        public void GetReadersRentedTime(IEnumerable<ReaderBookInfoViewModel> list)
         {
             
             foreach (var readersTime in list)
@@ -130,7 +130,7 @@ namespace laba1
             }
         }
 
-        public static void GetHorrorandDetectiveBooks(IEnumerable<GenreBookViewModel> list)
+        public void GetHorrorandDetectiveBooks(IEnumerable<GenreBookViewModel> list)
         {
             foreach (var HorrorandDetectiveBooks in list)
             {
@@ -140,7 +140,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksAuthorWithS(IEnumerable<AuthorBookViewModel> list)
+        public void GetBooksAuthorWithS(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var booksAuthorWithS in list)
             {
@@ -150,7 +150,7 @@ namespace laba1
             }
         }
 
-        public static void GetKingsBookPriceLower45(IEnumerable<AuthorBookViewModel> list)
+        public void GetKingsBookPriceLower45(IEnumerable<AuthorBookViewModel> list)
         {
             foreach (var kingsBookPriceLower in list)
             {
@@ -161,7 +161,7 @@ namespace laba1
             }
         }
 
-        public static void GetBookPriceForWeek(IEnumerable<Book> list)
+        public void GetBookPriceForWeek(IEnumerable<Book> list)
         {
             foreach (var priceForWeek in list)
             {
@@ -172,7 +172,7 @@ namespace laba1
             }
         }
 
-        public static void GetAllAuthors(IEnumerable<Author> list)
+        public void GetAllAuthors(IEnumerable<Author> list)
         {
             foreach (var author in list)
             {
@@ -181,7 +181,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksByGenre(Dictionary<string, IEnumerable<Book>> list)
+        public void GetBooksByGenre(Dictionary<string, IEnumerable<Book>> list)
         {
             foreach(var bookByGenre in list)
             {
@@ -194,7 +194,7 @@ namespace laba1
             }
         }
 
-        public static void GetBooksByAuthor(Dictionary<string, IEnumerable<Book>> list)
+        public void GetBooksByAuthor(Dictionary<string, IEnumerable<Book>> list)
         {
             foreach (var bookByAuthor in list)
             {

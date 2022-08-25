@@ -11,94 +11,96 @@ namespace laba1
     {
         public static void Main()
         {
+            var queries = new Queries();
+            var consoleReader = new ConsoleReader();
 
-            var readerInfo = Queries.ReadersInfo();
-            ConsoleReader.GetReadersInfo(readerInfo);
-
-            Console.WriteLine(new string('_', 60));
-
-            var bookInfo = Queries.BooksInfo();
-            ConsoleReader.GetBooksInfo(bookInfo);
+            var readerInfo = queries.ReadersInfo();
+            consoleReader.GetReadersInfo(readerInfo);
 
             Console.WriteLine(new string('_', 60));
 
-            var authorSorted = Queries.AuthorsSortedInfo();
-            ConsoleReader.GetSortedAuthors(authorSorted);
+            var bookInfo = queries.BooksInfo();
+            consoleReader.GetBooksInfo(bookInfo);
 
             Console.WriteLine(new string('_', 60));
 
-            var priceOver40 = Queries.BooksPriceOver40();
-            ConsoleReader.GetBooksPriceOver40(priceOver40);
+            var authorSorted = queries.AuthorsSortedInfo();
+            consoleReader.GetSortedAuthors(authorSorted);
 
             Console.WriteLine(new string('_', 60));
 
-            var nameStartsWithO = Queries.ReaderNameStartsWithOInfo();
-            ConsoleReader.GetReadersNameStartsWithO(nameStartsWithO);
+            var priceOver40 = queries.BooksPriceOver40();
+            consoleReader.GetBooksPriceOver40(priceOver40);
 
             Console.WriteLine(new string('_', 60));
 
-            var stephensBooks = Queries.StephenKingBooks();
-            ConsoleReader.GetStephenKingBooks(stephensBooks);
+            var nameStartsWithO = queries.ReaderNameStartsWithOInfo();
+            consoleReader.GetReadersNameStartsWithO(nameStartsWithO);
 
             Console.WriteLine(new string('_', 60));
 
-            var sortedCollege = Queries.SortedCollegeStudents();
-            ConsoleReader.GetSortedCollegeStudents(sortedCollege);
+            var stephensBooks = queries.StephenKingBooks();
+            consoleReader.GetStephenKingBooks(stephensBooks);
 
             Console.WriteLine(new string('_', 60));
 
-            var readersRentedBooks = Queries.ReadersRentedBooks();
-            ConsoleReader.GetReadersRentedBooks(readersRentedBooks);
+            var sortedCollege = queries.SortedCollegeStudents();
+            consoleReader.GetSortedCollegeStudents(sortedCollege);
 
             Console.WriteLine(new string('_', 60));
 
-            var genresBooks = Queries.GenresGroupBooks();
-            ConsoleReader.GetGenresGroupBooks(genresBooks);
+            var readersRentedBooks = queries.ReadersRentedBooks();
+            consoleReader.GetReadersRentedBooks(readersRentedBooks);
 
             Console.WriteLine(new string('_', 60));
 
-            var rentTime = Queries.ReadersRentedTime();
-            ConsoleReader.GetReadersRentedTime(rentTime);
+            var genresBooks = queries.GenresGroupBooks();
+            consoleReader.GetGenresGroupBooks(genresBooks);
 
             Console.WriteLine(new string('_', 60));
 
-            var horrorAndDetective = Queries.HorrorandDetectiveBooks();
-            ConsoleReader.GetHorrorandDetectiveBooks(horrorAndDetective);
+            var rentTime = queries.ReadersRentedTime();
+            consoleReader.GetReadersRentedTime(rentTime);
 
             Console.WriteLine(new string('_', 60));
 
-            var booksAuthorWithS = Queries.BooksAuthorWithS();
-            ConsoleReader.GetBooksAuthorWithS(booksAuthorWithS);
+            var horrorAndDetective = queries.HorrorandDetectiveBooks();
+            consoleReader.GetHorrorandDetectiveBooks(horrorAndDetective);
 
             Console.WriteLine(new string('_', 60));
 
-            var kingsBookPrice = Queries.KingsBookPriceLower45();
-            ConsoleReader.GetKingsBookPriceLower45(kingsBookPrice);
+            var booksAuthorWithS = queries.BooksAuthorWithS();
+            consoleReader.GetBooksAuthorWithS(booksAuthorWithS);
 
             Console.WriteLine(new string('_', 60));
 
-            var weekPrice = Queries.BookPriceForWeek();
-            ConsoleReader.GetBookPriceForWeek(weekPrice);
+            var kingsBookPrice = queries.KingsBookPriceLower45();
+            consoleReader.GetKingsBookPriceLower45(kingsBookPrice);
 
             Console.WriteLine(new string('_', 60));
 
-            var booksPriceHigher40 = Queries.BooksPriceHigher40();
+            var weekPrice = queries.BookPriceForWeek();
+            consoleReader.GetBookPriceForWeek(weekPrice);
+
+            Console.WriteLine(new string('_', 60));
+
+            var booksPriceHigher40 = queries.BooksPriceHigher40();
             Console.WriteLine(booksPriceHigher40);
 
             Console.WriteLine(new string('_', 60));
 
-            var allAuthors = Queries.AllAuthors();
-            ConsoleReader.GetAllAuthors(allAuthors);
+            var allAuthors = queries.AllAuthors();
+            consoleReader.GetAllAuthors(allAuthors);
 
             Console.WriteLine(new string('_', 60));
 
-            var booksByGenre = Queries.BooksByGenre();
-            ConsoleReader.GetBooksByGenre(booksByGenre);
+            var booksByGenre = queries.BooksByGenre();
+            consoleReader.GetBooksByGenre(booksByGenre);
 
             Console.WriteLine(new string('_', 60));
 
-            var booksByAuthor = Queries.BooksByAuthor();
-            ConsoleReader.GetBooksByAuthor(booksByAuthor);
+            var booksByAuthor = queries.BooksByAuthor();
+            consoleReader.GetBooksByAuthor(booksByAuthor);
         }
     } 
 }
